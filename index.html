@@ -40,6 +40,33 @@ body.light {
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;min-height:100vh;display:flex;justify-content:center;}
 .app{width:100%;max-width:430px;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;}
 
+/* ── PC 와이드 레이아웃 ── */
+@media (min-width: 768px) {
+  body { justify-content: stretch; background: var(--bg); }
+  #mainApp { max-width: 100% !important; width: 100% !important; }
+  .app { max-width: 100%; }
+  .header { padding: 14px 32px; }
+  .date-strip { padding: 10px 32px; }
+  .tab-bar { padding: 0 32px; }
+  .main-scroll { padding-bottom: 40px; }
+  /* 탭 내용 최대 너비 제한 및 중앙 정렬 */
+  .panel > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+  /* 타임라인 패널 전체 너비 */
+  #panel-timeline { padding: 0 32px; }
+  /* 투두/습관/웰니스 등 패딩 */
+  #panel-blocks, #panel-habits, #panel-wellness, #panel-work, #panel-calendar, #panel-report {
+    padding: 20px 32px;
+  }
+  /* 하단 네비 숨기고 탭바로만 이동 */
+  .bottom-nav { display: none !important; }
+  .main-scroll { padding-bottom: 20px; }
+  /* 팝업/모달 최대 너비 */
+  .qa-sheet { max-width: 520px !important; left: 50% !important; transform: translateX(-50%) !important; right: auto !important; border-radius: 16px !important; bottom: 40px !important; }
+  /* 태스크 디테일 시트 */
+  .td-sheet { max-width: 560px !important; }
+  .td-overlay { align-items: center !important; }
+}
+
 /* HEADER */
 .header{padding:13px 16px 11px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
 .hdr-left{display:flex;align-items:center;gap:10px;}
@@ -588,7 +615,8 @@ body.light .habit-check-btn .chk-icon-done{color:#3a2600;}
 .ds-card-time{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text2);margin-top:1px;}
 
 /* ══ BOTTOM NAV ══ */
-.bottom-nav{position:fixed;bottom:0;width:100%;max-width:430px;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:7px 0 15px;z-index:100;}
+.bottom-nav{position:fixed;bottom:0;width:100%;max-width:430px;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:7px 0 15px;z-index:100;left:50%;transform:translateX(-50%);}
+@media(min-width:768px){.bottom-nav{display:none !important;}}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px 10px;border-radius:9px;font-size:10px;color:var(--text2);transition:all .15s;}
 .nav-item.active{color:var(--b1);}
 .nav-item .ni{font-size:20px;}
